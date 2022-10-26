@@ -1,0 +1,40 @@
+<script>
+
+function arrange(arr, n)
+{
+	let maxIn = n - 1, minIn = 0;
+
+	let maxEle = arr[n - 1] + 1;
+
+	for (let i = 0; i < n; i++) {
+		if (i % 2 == 0) {
+			arr[i] = arr[i] + (arr[maxIn] % maxEle) * maxEle;
+			maxIn--;
+		}
+
+		else {
+			arr[i] = arr[i] + (arr[minIn] % maxEle) * maxEle;
+			minIn++;
+		}
+	}
+
+	for (let i = 0; i < n; i++)
+		arr[i] = Math.floor(arr[i] / maxEle);
+}
+
+	let n = prompt("Enter array length:");
+  for(var i = 0; i < n; i++){
+    arr[i] = prompt("Enter array element:" + (i + 1));
+  }
+
+	document.write("Original Array<br>");
+	for (let i = 0; i < n; i++)
+		document.write(arr[i] + " ");
+
+	arrange(arr, n);
+
+	document.write("<br>Modified Array<br>");
+	for (let i = 0; i < n; i++)
+		document.write(arr[i] + " ");
+
+</script>
